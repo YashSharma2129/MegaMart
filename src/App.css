@@ -36,3 +36,113 @@
     transform: rotate(360deg);
   }
 }
+
+.category-swiper,
+.products-swiper {
+  padding: 10px 4px;
+  margin: -10px -4px;
+}
+
+.swiper-slide {
+  height: auto;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.hide-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.welcome-bar {
+  background-color: #f5f5f5;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+}
+
+.main-nav {
+  padding: 0.75rem 0;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.category-nav {
+  background-color: white;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.category-nav ul {
+  display: flex;
+  gap: 2rem;
+  overflow-x: auto;
+  padding: 0 1rem;
+}
+
+.category-nav li {
+  white-space: nowrap;
+  cursor: pointer;
+  padding: 0.5rem 0;
+}
+
+.swiper-pagination-bullet {
+  width: 10px !important;
+  height: 10px !important;
+  background: rgba(255, 255, 255, 0.5) !important;
+}
+
+.swiper-pagination-bullet-active {
+  background: white !important;
+}
+
+/* Daily Essentials Swiper Styles */
+.swiper-button-next,
+.swiper-button-prev {
+  background: white !important;
+  width: 40px !important;
+  height: 40px !important;
+  border-radius: 50% !important;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1) !important;
+}
+
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  font-size: 18px !important;
+  color: #1A2340 !important;
+}
+
+.swiper-button-next.swiper-button-disabled,
+.swiper-button-prev.swiper-button-disabled {
+  opacity: 0 !important;
+}
+
+/* Brand Section Swiper Styles */
+.brand-swiper .swiper-button-next,
+.brand-swiper .swiper-button-prev {
+  color: #1A2340;
+  background: white;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.brand-swiper .swiper-button-next:after,
+.brand-swiper .swiper-button-prev:after {
+  font-size: 18px;
+}
+
+.brand-swiper .swiper-pagination-bullet {
+  width: 10px;
+  height: 10px;
+  background: #1A2340;
+  opacity: 0.5;
+}
+
+.brand-swiper .swiper-pagination-bullet-active {
+  opacity: 1;
+  background: #1A2340;
+}
