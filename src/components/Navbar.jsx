@@ -96,15 +96,42 @@ export default function Navbar() {
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [anchorEl, setAnchorEl] = useState(null);
   const [authAnchorEl, setAuthAnchorEl] = useState(null);
+  const [categoryAnchorEl, setCategoryAnchorEl] = useState(null);
+  const [selectedCategory, setSelectedCategory] = useState(null);
   const openAuthMenu = Boolean(authAnchorEl);
   const navigate = useNavigate();
 
   const categories = [
-    { name: 'Home & Living', icon: <Home /> },
-    { name: 'Electronics', icon: <Devices /> },
-    { name: 'Groceries', icon: <Restaurant /> },
-    { name: 'Kitchen', icon: <Kitchen /> },
-    { name: 'Fashion', icon: <Favorite /> },
+    {
+      name: 'Home & Living',
+      icon: <Home />,
+      path: '/categories',
+      section: 'home-living'
+    },
+    {
+      name: 'Electronics',
+      icon: <Devices />,
+      path: '/categories',
+      section: 'electronics'
+    },
+    {
+      name: 'Groceries',
+      icon: <Restaurant />,
+      path: '/daily-essentials',
+      section: 'groceries'
+    },
+    {
+      name: 'Kitchen',
+      icon: <Kitchen />,
+      path: '/categories',
+      section: 'kitchen'
+    },
+    {
+      name: 'Fashion',
+      icon: <Favorite />,
+      path: '/brands',
+      section: 'fashion'
+    }
   ];
 
   const handleAuthMenuClick = (event) => {
@@ -118,6 +145,16 @@ export default function Navbar() {
   const handleNavigation = (path) => {
     navigate(path);
     setDrawerOpen(false);
+  };
+
+  const handleCategoryClick = (event, category) => {
+    navigate(category.path);
+    handleCategoryClose();
+  };
+
+  const handleCategoryClose = () => {
+    setCategoryAnchorEl(null);
+    setSelectedCategory(null);
   };
 
   return (
@@ -264,6 +301,7 @@ export default function Navbar() {
                   color="inherit"
                   endIcon={<KeyboardArrowDown />}
                   sx={{ textTransform: 'none' }}
+                  onClick={(e) => handleCategoryClick(e, category)}
                 >
                   {category.name}
                 </Button>
@@ -331,6 +369,41 @@ export default function Navbar() {
           </Box>
         </Box>
       </Drawer>
+
+      {/* Category Dropdown Menu */}
+      <Menu
+        anchorEl={categoryAnchorEl}
+        open={Boolean(categoryAnchorEl)}
+        onClose={handleCategoryClose}
+        PaperProps={{
+          sx: {
+            mt: 1,
+            width: 220,
+            '& .MuiMenuItem-root': {
+              py: 1,
+              px: 2
+            }
+          }
+        }}
+      >
+        {categories.map((category) => (
+          <MenuItem 
+            key={category.name}
+            onClick={(e) => handleCategoryClick(e, category)}
+            sx={{
+              '&:hover': {
+                bgcolor: 'primary.light',
+                color: 'white'
+              }
+            }}
+          >
+            <ListItemIcon sx={{ color: 'inherit' }}>
+              {category.icon}
+            </ListItemIcon>
+            <ListItemText primary={category.name} />
+          </MenuItem>
+        ))}
+      </Menu>
 
       {/* Spacing to prevent content from hiding under fixed AppBar */}
       <Toolbar />

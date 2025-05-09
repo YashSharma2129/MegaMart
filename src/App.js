@@ -31,7 +31,6 @@ function App() {
           <Route path="/daily-essentials" element={<DailyEssentials />} />
           <Route path="/brands" element={<BrandSection />} />
           <Route path="/cart" element={<CartPage />} />
-          {/* Add more routes as needed */}
         </Routes>
         <Footer />
       </div>
