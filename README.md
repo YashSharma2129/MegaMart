@@ -1,85 +1,47 @@
-# MegaMart 🛒
+# MegaMart - E-Commerce Platform
 
-A modern e-commerce platform built with React and Material UI, featuring a responsive design and intuitive user interface.
+A modern e-commerce platform built with React, Redux, and TailwindCSS.
 
-## Features ✨
+🌐 [Live Demo](https://megamart-clone.netlify.app/) | 📦 [GitHub Repository](https://github.com/YashSharma2129/MegaMart)
 
-- Responsive design that works on desktop and mobile
-- Interactive product catalog with categories
-- Shopping cart functionality with real-time updates
-- User authentication and profile management
-- Advanced product search functionality
-- Brand showcase with interactive sliders
-- Daily essentials section
-- Theme customization support
-- Multiple payment options
-- Order tracking system
-- Wishlist functionality
-- Secure checkout process
+## Features
 
-## Technologies Used 🛠
+- 🛍️ Modern e-commerce interface
+- 🎨 Responsive design
+- 🔐 User authentication
+- 🛒 Shopping cart functionality 
+- ⚡ Real-time product updates
+- 🌙 Dark/Light theme support
+- 📱 Mobile-friendly layout
 
-- React.js
-- Redux Toolkit (State Management)
-- Material UI (Components)
-- Tailwind CSS (Styling)
-- Swiper.js (Carousels)
-- React Router DOM (Routing)
-- React Icons
-- Jest (Testing)
-- Firebase (Authentication & Database)
-- Axios (API calls)
-- React Toastify (Notifications)
+## Tech Stack
 
-## Prerequisites 📋
+- ⚛️ React.js
+- 🔄 Redux for state management
+- 🎨 TailwindCSS for styling
+- 🔥 Firebase backend
+- 📦 Material-UI components
+- 🚀 Hosted on Netlify
 
-Before you begin, ensure you have met the following requirements:
-
-- Node.js (v14.0.0 or higher)
-- npm (v6.0.0 or higher)
-- Git
-
-## Getting Started 🚀
+## Getting Started
 
 1. Clone the repository:
-
    ```bash
    git clone https://github.com/YashSharma2129/MegaMart.git
    ```
 
-2. Navigate to the project directory:
-
+2. Install dependencies:
    ```bash
-   cd megamart-clone
-   ```
-
-3. Install dependencies:
-
-   ```bash
+   cd megamart
    npm install
    ```
 
-4. Start the development server:
-
+3. Start the development server:
    ```bash
    npm start
    ```
 
-5. Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-## Environment Variables 🔐
-
-Create a `.env` file in the root directory and add the following:
-
-```env
-REACT_APP_API_URL=your_api_url
-REACT_APP_FIREBASE_API_KEY=your_firebase_api_key
-REACT_APP_FIREBASE_AUTH_DOMAIN=your_auth_domain
-REACT_APP_FIREBASE_PROJECT_ID=your_project_id
-REACT_APP_FIREBASE_STORAGE_BUCKET=your_storage_bucket
-REACT_APP_FIREBASE_MESSAGING_SENDER_ID=your_sender_id
-REACT_APP_FIREBASE_APP_ID=your_app_id
-```
+4. Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 ## Project Structure 📁
 
