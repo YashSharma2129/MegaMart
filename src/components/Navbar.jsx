@@ -93,13 +93,12 @@ const navigationRoutes = [
 
 export default function Navbar() {
   const { items } = useSelector(state => state.cart);
+  const navigate = useNavigate();
   const [drawerOpen, setDrawerOpen] = useState(false);
-  const [anchorEl, setAnchorEl] = useState(null);
   const [authAnchorEl, setAuthAnchorEl] = useState(null);
   const [categoryAnchorEl, setCategoryAnchorEl] = useState(null);
   const [selectedCategory, setSelectedCategory] = useState(null);
   const openAuthMenu = Boolean(authAnchorEl);
-  const navigate = useNavigate();
 
   const categories = [
     {
@@ -111,7 +110,7 @@ export default function Navbar() {
     {
       name: 'Electronics',
       icon: <Devices />,
-      path: '/categories',
+      path: '/brands',
       section: 'electronics'
     },
     {
@@ -129,7 +128,7 @@ export default function Navbar() {
     {
       name: 'Fashion',
       icon: <Favorite />,
-      path: '/brands',
+      path: '/categories',
       section: 'fashion'
     }
   ];
@@ -155,6 +154,10 @@ export default function Navbar() {
   const handleCategoryClose = () => {
     setCategoryAnchorEl(null);
     setSelectedCategory(null);
+  };
+
+  const handleLogoClick = () => {
+    navigate('/');
   };
 
   return (
@@ -205,11 +208,17 @@ export default function Navbar() {
             <Typography 
               variant="h5" 
               component="div" 
+              onClick={handleLogoClick}
               sx={{ 
                 display: { xs: 'block' }, 
                 fontWeight: 700,
                 mr: 3,
-                fontSize: { xs: '1.2rem', md: '1.5rem' }
+                fontSize: { xs: '1.2rem', md: '1.5rem' },
+                cursor: 'pointer',
+                '&:hover': {
+                  opacity: 0.8
+                },
+                transition: 'opacity 0.2s'
               }}
             >
               MegaMart
@@ -299,7 +308,6 @@ export default function Navbar() {
                 <Button
                   key={category.name}
                   color="inherit"
-                  endIcon={<KeyboardArrowDown />}
                   sx={{ textTransform: 'none' }}
                   onClick={(e) => handleCategoryClick(e, category)}
                 >
