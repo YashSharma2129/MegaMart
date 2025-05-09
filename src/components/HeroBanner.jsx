@@ -3,7 +3,7 @@ import { Box, Container, Typography, Button, useTheme } from '@mui/material';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Autoplay, EffectFade } from 'swiper/modules';
 import { styled } from '@mui/material/styles';
-import { ShoppingBag, ArrowForward } from '@mui/icons-material';
+import { ShoppingBag } from '@mui/icons-material';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
@@ -48,7 +48,7 @@ const banners = [
     subtitle: "Experience Innovation",
     description: "Discover the latest in technology with exclusive deals on smartphones, laptops & more",
     discount: "UP TO 80% OFF",
-    image: "/banners/banner1.jpg",
+    image: "https://images.unsplash.com/photo-1498049794561-7780e7231661?ixlib=rb-4.0.3",
     gradient: "linear-gradient(90deg, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.7) 40%, rgba(0,0,0,0) 100%)",
     cta: "Shop Electronics",
   },
@@ -76,7 +76,7 @@ export default function HeroBanner() {
   const theme = useTheme();
 
   return (
-    <Box sx={{ bgcolor: 'background.paper', py: 2 }}>
+    <Box sx={{ bgcolor: 'background.paper', py: { xs: 1, md: 2 } }}>
       <Container maxWidth="xl">
         <StyledSwiper
           modules={[Navigation, Pagination, Autoplay, EffectFade]}
@@ -90,7 +90,7 @@ export default function HeroBanner() {
             <SwiperSlide key={index}>
               <Box
                 sx={{
-                  height: '100%',
+                  height: { xs: '300px', sm: '350px', md: '400px' },
                   position: 'relative',
                   display: 'flex',
                   overflow: 'hidden',
@@ -101,19 +101,22 @@ export default function HeroBanner() {
                 <Box
                   sx={{
                     position: 'relative',
-                    width: '50%', // Reduced width
+                    width: { xs: '100%', md: '50%' },
                     zIndex: 2,
                     display: 'flex',
                     alignItems: 'center',
-                    background: banner.gradient,
+                    background: {
+                      xs: 'linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7))',
+                      md: banner.gradient
+                    },
                   }}
                 >
                   <Box
                     sx={{
-                      maxWidth: 450,
+                      maxWidth: { xs: '100%', md: 450 },
                       color: 'white',
-                      p: { xs: 2, md: 3 },
-                      ml: { xs: 2, md: 4 },
+                      p: { xs: 3, md: 4 },
+                      textAlign: { xs: 'center', md: 'left' },
                     }}
                   >
                     <Typography
@@ -123,55 +126,59 @@ export default function HeroBanner() {
                         fontWeight: 'bold',
                         mb: 0.5,
                         display: 'block',
+                        fontSize: { xs: '0.7rem', md: '0.875rem' },
                       }}
                     >
                       {banner.subtitle}
                     </Typography>
                     <Typography
-                      variant="h4" // Changed from h3
+                      variant="h4"
                       sx={{
                         fontWeight: 'bold',
                         mb: 1,
-                        fontSize: { xs: '1.5rem', md: '2rem' },
+                        fontSize: { xs: '1.5rem', sm: '1.75rem', md: '2rem' },
                         lineHeight: 1.2,
                       }}
                     >
                       {banner.title}
                     </Typography>
                     <Typography
-                      variant="body2" // Changed from body1
+                      variant="body2"
                       sx={{
                         mb: 2,
                         opacity: 0.9,
                         fontSize: { xs: '0.875rem', md: '1rem' },
+                        display: { xs: 'none', sm: 'block' },
                       }}
                     >
                       {banner.description}
                     </Typography>
                     <Typography
-                      variant="h6" // Changed from h5
+                      variant="h6"
                       sx={{
                         color: theme.palette.secondary.light,
                         fontWeight: 'bold',
                         mb: 2,
+                        fontSize: { xs: '1rem', md: '1.25rem' },
                       }}
                     >
                       {banner.discount}
                     </Typography>
                     <Button
                       variant="contained"
-                      size="medium" // Changed from large
+                      size="medium"
                       endIcon={<ShoppingBag />}
                       sx={{
                         borderRadius: '25px',
-                        px: 2.5,
-                        py: 0.75,
+                        px: { xs: 2, md: 2.5 },
+                        py: { xs: 0.5, md: 0.75 },
                         bgcolor: 'white',
                         color: 'primary.main',
                         '&:hover': {
                           bgcolor: 'primary.main',
                           color: 'white',
                         },
+                        fontSize: { xs: '0.875rem', md: '1rem' },
                       }}
                     >
                       {banner.cta}
@@ -182,12 +189,13 @@ export default function HeroBanner() {
                 {/* Image Section */}
                 <Box
                   sx={{
-                    position: 'absolute',
+                    position: { xs: 'absolute', md: 'absolute' },
                     right: 0,
                     top: 0,
-                    width: '50%', // Reduced width
+                    width: { xs: '100%', md: '50%' },
                     height: '100%',
                     overflow: 'hidden',
+                    zIndex: { xs: 0, md: 1 },
                   }}
                 >
                   <Box
@@ -197,12 +205,12 @@ export default function HeroBanner() {
                     sx={{
                       width: '100%',
                       height: '100%',
-                      objectFit: 'contain', // Changed from cover
-                      objectPosition: 'center right',
-                      transform: 'scale(0.9)', // Reduced scale
+                      objectFit: { xs: 'cover', md: 'contain' },
+                      objectPosition: { xs: 'center', md: 'center right' },
+                      transform: { xs: 'none', md: 'scale(0.9)' },
                       transition: 'transform 0.3s ease-in-out',
                       '&:hover': {
-                        transform: 'scale(0.95)',
+                        transform: { xs: 'none', md: 'scale(0.95)' },
                       },
                     }}
                   />

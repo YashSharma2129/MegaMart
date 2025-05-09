@@ -36,6 +36,7 @@ import {
 } from '@mui/icons-material';
 import { useSelector } from 'react-redux';
 import { styled } from '@mui/material/styles';
+import { useNavigate } from 'react-router-dom';
 
 const SearchWrapper = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -80,12 +81,23 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
+const navigationRoutes = [
+  { name: 'Home', icon: <Home />, path: '/' },
+  { name: 'All Categories', icon: <Category />, path: '/categories' },
+  { name: 'Daily Essentials', icon: <LocalShipping />, path: '/daily-essentials' },
+  { name: 'Top Brands', icon: <Favorite />, path: '/brands' },
+  { name: 'My Orders', icon: <LocalShipping />, path: '/orders' },
+  { name: 'My Wishlist', icon: <Favorite />, path: '/wishlist' },
+  { name: 'My Profile', icon: <Person />, path: '/profile' },
+];
+
 export default function Navbar() {
   const { items } = useSelector(state => state.cart);
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [anchorEl, setAnchorEl] = useState(null);
   const [authAnchorEl, setAuthAnchorEl] = useState(null);
   const openAuthMenu = Boolean(authAnchorEl);
+  const navigate = useNavigate();
 
   const categories = [
     { name: 'Home & Living', icon: <Home /> },
@@ -101,6 +113,11 @@ export default function Navbar() {
 
   const handleAuthMenuClose = () => {
     setAuthAnchorEl(null);
+  };
+
+  const handleNavigation = (path) => {
+    navigate(path);
+    setDrawerOpen(false);
   };
 
   return (
@@ -258,15 +275,60 @@ export default function Navbar() {
 
       {/* Mobile Drawer */}
       <Drawer anchor="left" open={drawerOpen} onClose={() => setDrawerOpen(false)}>
-        <Box sx={{ width: 280 }} role="presentation">
+        <Box sx={{ width: 280, pt: 2 }} role="presentation">
+          {/* User Profile Section */}
+          <Box sx={{ p: 2, borderBottom: 1, borderColor: 'divider' }}>
+            <Box sx={{ display: 'flex', alignItems: 'center', mb: 1 }}>
+              <Person sx={{ mr: 1 }} />
+              <Typography variant="subtitle1" fontWeight="bold">
+                Welcome
+              </Typography>
+            </Box>
+            <Button
+              variant="outlined"
+              fullWidth
+              onClick={() => handleNavigation('/login')}
+              sx={{ mb: 1 }}
+            >
+              Login / Sign Up
+            </Button>
+          </Box>
+
+          {/* Navigation Links */}
           <List>
-            {categories.map((category) => (
-              <ListItem button key={category.name}>
-                <ListItemIcon>{category.icon}</ListItemIcon>
-                <ListItemText primary={category.name} />
+            {navigationRoutes.map((route) => (
+              <ListItem 
+                button 
+                key={route.name}
+                onClick={() => handleNavigation(route.path)}
+                sx={{
+                  '&:hover': {
+                    bgcolor: 'primary.light',
+                    '& .MuiListItemIcon-root, & .MuiListItemText-root': {
+                      color: 'primary.main'
+                    }
+                  }
+                }}
+              >
+                <ListItemIcon sx={{ minWidth: 40 }}>
+                  {route.icon}
+                </ListItemIcon>
+                <ListItemText 
+                  primary={route.name}
+                  primaryTypographyProps={{
+                    fontSize: '0.9rem'
+                  }}
+                />
               </ListItem>
             ))}
           </List>
+
+          {/* Additional Options */}
+          <Box sx={{ p: 2, mt: 2, borderTop: 1, borderColor: 'divider' }}>
+            <Typography variant="caption" color="text.secondary">
+              Customer Service: +1 202-918-2132
+            </Typography>
+          </Box>
         </Box>
       </Drawer>
 
